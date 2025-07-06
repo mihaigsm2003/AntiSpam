@@ -3,7 +3,7 @@ This plugin blocks the possibility of giving the same command multiple times wit
 The config is automatically created and can add any command by example:
 ```
 {
-  "CooldownSeconds": 10,
+  "CooldownSeconds": 10, // time after can use next command
   "ProtectedCommands": [
     "css_heal",
     "css_give",
