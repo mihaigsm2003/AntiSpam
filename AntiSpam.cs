@@ -13,7 +13,7 @@ public class AntiSpamConfig : BasePluginConfig
     public float CooldownSeconds { get; set; } = 10.0f;
 
     [JsonPropertyName("ProtectedCommands")]
-    public List<string> ProtectedCommands { get; set; } = new() { "css_heal", "css_give", "css_cont", "css_say" };
+    public List<string> ProtectedCommands { get; set; } = new() { "css_heal", "css_give", "css_vip", "css_say" };
 }
 
 [MinimumApiVersion(130)]
