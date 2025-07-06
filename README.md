@@ -13,3 +13,6 @@ The config is automatically created and can add any command by example:
   "ConfigVersion": 1
 }
 ```
+## ⚙️ Requirements
+**Ensure all the following dependencies are installed before proceeding**
+- [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
