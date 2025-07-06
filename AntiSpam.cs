@@ -84,9 +84,9 @@ public class AntiSpamPlugin : BasePlugin, IPluginConfig<AntiSpamConfig>
         {
             if (currentTime - lastTime < Config.CooldownSeconds)
             {
-                player.PrintToChat("\x02[AntiSpam] \x01********************************");
-                player.PrintToChat($"\x02[AntiSpam] \x06 Așteaptă \x02{Config.CooldownSeconds} secunde \x06între comenzi!");
-                player.PrintToChat("\x02[AntiSpam] \x01********************************");
+                player.PrintToChat("\x02[AntiSpam] \x01***********************************");
+                player.PrintToChat($"\x02[AntiSpam] \x06 Wait \x02{Config.CooldownSeconds} seconds\x06 between commands!");
+                player.PrintToChat("\x02[AntiSpam] \x01***********************************");
                 return HookResult.Handled;
             }
         }
