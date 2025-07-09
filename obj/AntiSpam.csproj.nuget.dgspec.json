@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\MihaiGsm2003\\Desktop\\CS2\\github\\AntiSpam\\AntiSpam.csproj": {}
+    "C:\\Users\\admin\\Desktop\\CS2\\CSS\\Github\\AntiSpam\\AntiSpam.csproj": {}
   },
   "projects": {
-    "c:\\Users\\MihaiGsm2003\\Desktop\\CS2\\github\\AntiSpam\\AntiSpam.csproj": {
+    "C:\\Users\\admin\\Desktop\\CS2\\CSS\\Github\\AntiSpam\\AntiSpam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\MihaiGsm2003\\Desktop\\CS2\\github\\AntiSpam\\AntiSpam.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\CS2\\CSS\\Github\\AntiSpam\\AntiSpam.csproj",
         "projectName": "AntiSpam",
-        "projectPath": "c:\\Users\\MihaiGsm2003\\Desktop\\CS2\\github\\AntiSpam\\AntiSpam.csproj",
-        "packagesPath": "C:\\Users\\MihaiGsm2003\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\MihaiGsm2003\\Desktop\\CS2\\github\\AntiSpam\\obj\\",
+        "projectPath": "C:\\Users\\admin\\Desktop\\CS2\\CSS\\Github\\AntiSpam\\AntiSpam.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\CS2\\CSS\\Github\\AntiSpam\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\MihaiGsm2003\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -59,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.315/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

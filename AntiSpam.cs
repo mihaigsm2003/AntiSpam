@@ -13,19 +13,24 @@ public class AntiSpamConfig : BasePluginConfig
 
     [JsonPropertyName("ProtectedCommands")]
     public List<string> ProtectedCommands { get; set; } = new() { "css_heal", "css_give", "css_vip", "css_say" };
+
+    [JsonPropertyName("CommandBurstLimit")]
+    public int CommandBurstLimit { get; set; } = 3;
 }
 
 [MinimumApiVersion(130)]
 public class AntiSpamPlugin : BasePlugin, IPluginConfig<AntiSpamConfig>
 {
     public override string ModuleName => "AntiSpamChat";
-    public override string ModuleVersion => "1.0.2";
+    public override string ModuleVersion => "1.1.0";
     public override string ModuleAuthor => "GSM-RO";
-    public override string ModuleDescription => "Anti-spam for console commands and chat";
+    public override string ModuleDescription => "Anti-spam cu limită de execuție și cooldown";
 
     public AntiSpamConfig Config { get; set; } = new();
 
-    private readonly Dictionary<ulong, float> lastCommandTime = new();
+    // Număr de comenzi executate fără cooldown
+    private readonly Dictionary<ulong, int> burstCount = new();
+    private readonly Dictionary<ulong, float> cooldownStartTime = new();
 
     public void OnConfigParsed(AntiSpamConfig config)
     {
@@ -63,7 +68,7 @@ public class AntiSpamPlugin : BasePlugin, IPluginConfig<AntiSpamConfig>
 
         if (text.StartsWith("!") || text.StartsWith("/"))
         {
-            string command = text[1..].Split(' ')[0]; // Get the command part after the prefix
+            string command = text[1..].Split(' ')[0];
             if (Config.ProtectedCommands.Contains(command))
                 return HandleCommand(player, command);
         }
@@ -73,24 +78,37 @@ public class AntiSpamPlugin : BasePlugin, IPluginConfig<AntiSpamConfig>
 
     private HookResult HandleCommand(CCSPlayerController player, string commandName)
     {
-        if (player.AuthorizedSteamID == null)
-            return HookResult.Continue;
-
-        ulong steamId = player.AuthorizedSteamID.SteamId64;
+        ulong steamId = player.AuthorizedSteamID!.SteamId64;
         float currentTime = (float)Server.EngineTime;
 
-        if (lastCommandTime.TryGetValue(steamId, out float lastTime))
+        // Verificăm dacă jucătorul este în cooldown
+        if (cooldownStartTime.TryGetValue(steamId, out float cooldownStarted))
         {
-            if (currentTime - lastTime < Config.CooldownSeconds)
+            if (currentTime - cooldownStarted < Config.CooldownSeconds)
             {
-                player.PrintToChat("\x02[AntiSpam] \x01***********************************");
-                player.PrintToChat($"\x02[AntiSpam] \x06 Wait \x02{Config.CooldownSeconds} seconds\x06 between commands!");
-                player.PrintToChat("\x02[AntiSpam] \x01***********************************");
+                player.PrintToChat("\x02[AntiSpam] \x06Trebuie să aștepți " + Config.CooldownSeconds + " secunde după " + Config.CommandBurstLimit + " comenzi protejate!");
                 return HookResult.Handled;
+            }
+            else
+            {
+                // Cooldown-ul a expirat
+                cooldownStartTime.Remove(steamId);
+                burstCount[steamId] = 0;
             }
         }
 
-        lastCommandTime[steamId] = currentTime;
+        // Actualizăm numărul de comenzi executate
+        if (!burstCount.ContainsKey(steamId))
+            burstCount[steamId] = 0;
+
+        burstCount[steamId]++;
+
+        if (burstCount[steamId] >= Config.CommandBurstLimit)
+        {
+            cooldownStartTime[steamId] = currentTime;
+            player.PrintToChat("\x02[AntiSpam] \x06Ai atins limita de comenzi! Cooldown activ pentru " + Config.CooldownSeconds + " secunde.");
+        }
+
         return HookResult.Continue;
     }
 }

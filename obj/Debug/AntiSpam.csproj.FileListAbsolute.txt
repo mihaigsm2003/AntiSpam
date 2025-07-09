@@ -1,0 +1,8 @@
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\bin\Release\addons\counterstrikesharp\plugins\AntiSpam\AntiSpam.deps.json
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\bin\Release\addons\counterstrikesharp\plugins\AntiSpam\AntiSpam.dll
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\obj\Debug\AntiSpam.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\obj\Debug\AntiSpam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\obj\Debug\AntiSpam.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\obj\Debug\AntiSpam.dll
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\obj\Debug\refint\AntiSpam.dll
+C:\Users\admin\Desktop\CS2\CSS\Github\AntiSpam\obj\Debug\ref\AntiSpam.dll
